@@ -131,8 +131,8 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                       Profile
                     </h4>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-main leading-tight tracking-tight mb-1">
-                      Vighnesh<br />
-                      <span className="text-muted opacity-50">Gaddam.</span>
+                      Shreesha<br />
+                      <span className="text-muted opacity-50">V Jain.</span>
                     </h2>
                     <p className="text-[0.7rem] text-muted mt-3 leading-relaxed">
                       MCA student at Manipal University. Full stack developer based in Mumbai, India.

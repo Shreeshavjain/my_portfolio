@@ -126,7 +126,7 @@ export default function ProjectsPage() {
                 </div>
                 <div className="mt-4">
                   <h4 className="font-bold text-main">LinkedIn</h4>
-                  <p className="text-xs text-text-muted">@vighneshgd</p>
+                  <p className="text-xs text-text-muted">Shreesha V Jain</p>
                 </div>
               </div>
             </BentoCard>

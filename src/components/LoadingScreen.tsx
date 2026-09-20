@@ -13,7 +13,7 @@ export const LoadingScreen = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const name = "VIGHNESH GADDAM";
+  const name = "SHREESHA V JAIN";
 
   return (
     <motion.div

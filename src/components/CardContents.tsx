@@ -536,7 +536,7 @@ export const GitHubContent = React.memo(function GitHubContent() {
         <a href={socials.github} target="_blank" rel="noreferrer"
           className="text-[0.55rem] font-bold uppercase tracking-widest text-muted [@media(hover:hover)]:hover:text-main transition-colors"
           onClick={e => e.stopPropagation()}>
-          @Vighnesh-Gaddam
+          Shreesha V Jain
         </a>
         <div className="flex items-center gap-1">
           <span className="text-[0.55rem] text-muted/50">Less</span>

@@ -2,9 +2,9 @@
 
 // ─── PERSONAL ───────────────────────────────────────────────
 export const person = {
-  name: "Vighnesh Gaddam",
-  firstName: "Vighnesh",
-  lastName: "Gaddam.",
+  name: "Shreesha V Jain",
+  firstName: "Shreesha",
+  lastName: "V Jain.",
   role: "Full Stack Developer",
   bio: "Full Stack Developer architecting <full-stack>scalable apps</full-stack> & <devops>production-ready</devops> cloud systems.",
   email: "vgnshgdm@gmail.com",
@@ -204,7 +204,7 @@ export const testimonials: Testimonial[] = [
     name: "Rohit Miryala",
     role: "SDE",
     company: "TechieBears Pvt. Ltd.",
-    text: "Vighnesh worked with us on a full-stack platform and handled the UI side really well. The GSAP animations he implemented were smooth and actually improved the feel of the product. He’s very detail-oriented and easy to work with.",
+    text: "Shreesha worked with us on a full-stack platform and handled the UI side really well. The GSAP animations implemented were smooth and actually improved the feel of the product. Shreesha is very detail-oriented and easy to work with.",
   },
   {
     id: "2",
@@ -271,7 +271,7 @@ export const blogCategories: BlogCategory[] = [
 // ─── SEO / METADATA ──────────────────────────────────────────
 export const seo = {
   url: "https://whoisvighnesh.in",
-  siteName: "Vighnesh Gaddam Portfolio",
+  siteName: "Shreesha V Jain Portfolio",
   ogImage: "https://whoisvighnesh.in/og-image.webp",
   twitterHandle: "@DevVighnesh",
   googleVerification: "cIA6t7lrm7bP85h9L0MiaI6I5a3yfqBvbs4De7nFfCs",

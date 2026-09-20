@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(seo.url),
 
   title: {
-    default: "Vighnesh Gaddam | Full Stack Developer from Mumbai",
-    template: "%s | Vighnesh Gaddam",
+    default: "Shreesha V Jain | Full Stack Developer",
+    template: "%s | Shreesha V Jain",
   },
 
   verification: {
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   },
 
   description:
-    "I'm Vighnesh Gaddam, a full-stack developer who enjoys building fast, scalable web apps and turning ideas into real, working products. I work mainly with React, Next.js, NestJS, and TypeScript, focusing on clean architecture, performance, and systems that hold up in production.",
+    "I'm Shreesha V Jain, a full-stack developer who enjoys building fast, scalable web apps and turning ideas into real, working products. I work mainly with React, Next.js, NestJS, and TypeScript, focusing on clean architecture, performance, and systems that hold up in production.",
 
   keywords: [
-    "Vighnesh Gaddam",
+    "Shreesha V Jain",
     "Full Stack Developer Portfolio",
     "Next.js Developer",
     "React Developer",
@@ -58,7 +58,7 @@ icons: {
   },
 
   openGraph: {
-    title: "Vighnesh Gaddam | Full Stack Developer",
+    title: "Shreesha V Jain | Full Stack Developer",
     description:
       "Here's a glimpse of what I've been working on — building web apps that don't just run fast, but hold up when things get real.",
     url: seo.url,
@@ -68,7 +68,7 @@ icons: {
         url: seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "Vighnesh Gaddam — Full Stack Developer",
+        alt: "Shreesha V Jain — Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -77,7 +77,7 @@ icons: {
 
   twitter: {
     card: "summary_large_image",
-    title: "Vighnesh Gaddam | Full Stack Developer",
+    title: "Shreesha V Jain | Full Stack Developer",
     description:
       "I build web apps using React, Next.js, and TypeScript — the kind that stay fast, scale smoothly, and don't fall apart once real users show up.",
     site: seo.twitterHandle,
@@ -116,7 +116,7 @@ export default function RootLayout({
         <div id="initial-loader">
           <div className="loader-content">
             <div className="loader-typography">
-              <span className="loader-name">VIGHNESH GADDAM</span>
+              <span className="loader-name">SHREESHA V JAIN</span>
               <span className="loader-year">Portfolio 2026</span>
             </div>
             <div className="loader-circle-container">
