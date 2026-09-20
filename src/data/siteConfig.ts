@@ -272,7 +272,7 @@ export const blogCategories: BlogCategory[] = [
 export const seo = {
   url: "https://whoisvighnesh.in",
   siteName: "Shreesha V Jain Portfolio",
-  ogImage: "https://whoisvighnesh.in/og-image.webp",
+  ogImage: "/shreesha-portrait.png",
   twitterHandle: "@DevVighnesh",
   googleVerification: "cIA6t7lrm7bP85h9L0MiaI6I5a3yfqBvbs4De7nFfCs",
 } as const;
