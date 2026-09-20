@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
@@ -84,14 +85,18 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       style={{ WebkitTapHighlightColor: "transparent" }}
     >
       {backgroundImage && (
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-110"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-          role="img"
-          aria-label={
-            dataId === "photo" ? "Profile photo of the developer" : "Background image"
-          }
-        />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Image
+            src={backgroundImage}
+            alt={
+              dataId === "photo" ? "Portrait of Shreesha V Jain" : "Background image"
+            }
+            fill
+            priority={dataId === "photo"}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 20vw"
+            className="object-cover object-[center_20%] sm:object-[center_22%] lg:object-[center_20%] transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        </div>
       )}
 
       <div
