@@ -402,6 +402,7 @@ const fallbackGrid = generateFallback();
 export const GitHubContent = React.memo(function GitHubContent() {
   const [grid, setGrid] = React.useState<Level[][]>(fallbackGrid);
   const [total, setTotal] = React.useState<number | null>(null);
+  const [breakdown, setBreakdown] = React.useState<{ currentYear: number; previousYear: number } | null>(null);
   const [loading, setLoading] = React.useState(true);
   const { resolvedTheme } = useTheme();
 
@@ -413,23 +414,22 @@ export const GitHubContent = React.memo(function GitHubContent() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-    const ghUsername = socials.github.split('/').filter(Boolean).pop() || 'Shreeshavjain';
+    const timeout = setTimeout(() => controller.abort(), 8000);
 
-    fetch(`https://github-contributions-api.jogruber.de/v4/${ghUsername}?y=last`, {
-      signal: controller.signal,
-    })
+    fetch('/api/github', { signal: controller.signal })
       .then(r => r.json())
       .then(data => {
         clearTimeout(timeout);
-        if (data.contributions) {
-          const flat: { date: string; count: number }[] = data.contributions;
-          const weeks: Level[][] = [];
-          for (let i = 0; i < flat.length; i += 7) {
-            weeks.push(flat.slice(i, i + 7).map(d => getLevel(d.count)));
-          }
+        if (data.weeks) {
+          const weeks: Level[][] = data.weeks.map(
+            (week: { count: number; date: string }[]) =>
+              week.map(d => getLevel(d.count))
+          );
           setGrid(weeks.slice(-DISPLAY_WEEKS));
-          setTotal(flat.reduce((sum, d) => sum + d.count, 0));
+          setTotal(data.total ?? null);
+          if (data.breakdown) {
+            setBreakdown(data.breakdown);
+          }
         }
         setLoading(false);
       })
@@ -475,7 +475,16 @@ export const GitHubContent = React.memo(function GitHubContent() {
       <div className="flex items-center justify-between shrink-0">
         <div className="flex items-center gap-1.5">
           <Github size={11} strokeWidth={1.5} className="text-muted" />
-          <span className="text-[0.55rem] font-bold uppercase tracking-widest text-muted">
+          <span
+            className="text-[0.55rem] font-bold uppercase tracking-widest text-muted"
+            title={
+              breakdown
+                ? `${total} contributions across 2 calendar years (${breakdown.previousYear} + ${breakdown.currentYear})`
+                : total !== null
+                ? `${total} contributions (2-year total)`
+                : undefined
+            }
+          >
             {loading ? 'Loading…' : total !== null ? `${total} contributions` : 'Activity'}
           </span>
         </div>
