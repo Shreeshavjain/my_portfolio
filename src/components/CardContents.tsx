@@ -402,7 +402,7 @@ const fallbackGrid = generateFallback();
 export const GitHubContent = React.memo(function GitHubContent() {
   const [grid, setGrid] = React.useState<Level[][]>(fallbackGrid);
   const [total, setTotal] = React.useState<number | null>(null);
-  const [breakdown, setBreakdown] = React.useState<{ currentYear: number; previousYear: number } | null>(null);
+  const [breakdown, setBreakdown] = React.useState<Record<string, number> | null>(null);
   const [loading, setLoading] = React.useState(true);
   const { resolvedTheme } = useTheme();
 
@@ -479,9 +479,9 @@ export const GitHubContent = React.memo(function GitHubContent() {
             className="text-[0.55rem] font-bold uppercase tracking-widest text-muted"
             title={
               breakdown
-                ? `${total} contributions across 2 calendar years (${breakdown.previousYear} + ${breakdown.currentYear})`
+                ? `${total} lifetime contributions (${Object.entries(breakdown).map(([y, c]) => `${y}: ${c}`).join(', ')})`
                 : total !== null
-                ? `${total} contributions (2-year total)`
+                ? `${total} lifetime contributions`
                 : undefined
             }
           >

@@ -11,41 +11,13 @@ interface ContributionWeek {
   contributionDays: ContributionDay[];
 }
 
-interface GitHubGraphQLResponse {
-  data?: {
-    user?: {
-      recent?: {
-        contributionCalendar: {
-          weeks: ContributionWeek[];
-        };
-      };
-      currentYear?: {
-        contributionCalendar: {
-          totalContributions: number;
-        };
-      };
-      previousYear?: {
-        contributionCalendar: {
-          totalContributions: number;
-        };
-      };
-    };
-  };
-  errors?: { message: string }[];
-}
-
 const username = socials.github.split('/').filter(Boolean).pop() || 'Shreeshavjain';
 
-const query = `
-  query(
-    $username: String!
-    $thisYearFrom: DateTime!
-    $thisYearTo: DateTime!
-    $prevYearFrom: DateTime!
-    $prevYearTo: DateTime!
-  ) {
+const initialQuery = `
+  query($username: String!) {
     user(login: $username) {
-      recent: contributionsCollection {
+      contributionsCollection {
+        contributionYears
         contributionCalendar {
           weeks {
             contributionDays {
@@ -54,16 +26,6 @@ const query = `
               weekday
             }
           }
-        }
-      }
-      currentYear: contributionsCollection(from: $thisYearFrom, to: $thisYearTo) {
-        contributionCalendar {
-          totalContributions
-        }
-      }
-      previousYear: contributionsCollection(from: $prevYearFrom, to: $prevYearTo) {
-        contributionCalendar {
-          totalContributions
         }
       }
     }
@@ -80,63 +42,44 @@ export async function GET() {
     );
   }
 
-  const now = new Date();
-  const currentYear = now.getUTCFullYear();
-  const previousYear = currentYear - 1;
-
-  const thisYearFrom = `${currentYear}-01-01T00:00:00Z`;
-  const thisYearTo = now.toISOString();
-  const prevYearFrom = `${previousYear}-01-01T00:00:00Z`;
-  const prevYearTo = `${previousYear}-12-31T23:59:59Z`;
-
   try {
-    const res = await fetch('https://api.github.com/graphql', {
+    // 1. Fetch contributionYears and the recent rolling calendar
+    const res1 = await fetch('https://api.github.com/graphql', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query,
-        variables: {
-          username,
-          thisYearFrom,
-          thisYearTo,
-          prevYearFrom,
-          prevYearTo,
-        },
+        query: initialQuery,
+        variables: { username },
       }),
-      // Cache for 1 hour on Vercel edge
       next: { revalidate: 3600 },
-      // Fail fast — don't hang for more than 5s
       signal: AbortSignal.timeout(5000),
     });
 
-    if (!res.ok) {
-      console.error('[GitHub API] HTTP error:', res.status);
+    if (!res1.ok) {
+      console.error('[GitHub API] Initial query HTTP error:', res1.status);
       return NextResponse.json(
         { weeks: null },
         { status: 500, headers: { 'Cache-Control': 'no-store' } }
       );
     }
 
-    const json: GitHubGraphQLResponse = await res.json();
+    const json1 = await res1.json();
 
-    if (json.errors?.length) {
-      console.error('[GitHub API] GraphQL errors:', json.errors);
+    if (json1.errors?.length) {
+      console.error('[GitHub API] Initial query GraphQL errors:', json1.errors);
       return NextResponse.json(
         { weeks: null },
         { status: 500, headers: { 'Cache-Control': 'no-store' } }
       );
     }
 
-    const recentWeeks =
-      json.data?.user?.recent?.contributionCalendar?.weeks ?? [];
-    const currentYearTotal =
-      json.data?.user?.currentYear?.contributionCalendar?.totalContributions ?? 0;
-    const previousYearTotal =
-      json.data?.user?.previousYear?.contributionCalendar?.totalContributions ?? 0;
-    const combinedTotal = currentYearTotal + previousYearTotal;
+    const collection = json1.data?.user?.contributionsCollection;
+    const contributionYears: number[] = collection?.contributionYears ?? [];
+    const recentWeeks: ContributionWeek[] =
+      collection?.contributionCalendar?.weeks ?? [];
 
     const last52 = recentWeeks.slice(-52).map((week) =>
       week.contributionDays.map((day) => ({
@@ -145,14 +88,88 @@ export async function GET() {
       }))
     );
 
+    if (!contributionYears.length) {
+      return NextResponse.json(
+        { weeks: last52, total: 0, breakdown: {} },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        }
+      );
+    }
+
+    // 2. Dynamically query totalContributions for every year in contributionYears
+    const now = new Date();
+    const currentYear = now.getUTCFullYear();
+
+    const yearFields = contributionYears
+      .map((year) => {
+        const from = `${year}-01-01T00:00:00Z`;
+        const to =
+          year === currentYear ? now.toISOString() : `${year}-12-31T23:59:59Z`;
+        return `
+          y_${year}: contributionsCollection(from: "${from}", to: "${to}") {
+            contributionCalendar {
+              totalContributions
+            }
+          }
+        `;
+      })
+      .join('\n');
+
+    const yearsQuery = `
+      query($username: String!) {
+        user(login: $username) {
+          ${yearFields}
+        }
+      }
+    `;
+
+    const res2 = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: yearsQuery,
+        variables: { username },
+      }),
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(5000),
+    });
+
+    if (!res2.ok) {
+      console.error('[GitHub API] Years query HTTP error:', res2.status);
+      return NextResponse.json(
+        { weeks: last52, total: null, breakdown: {} },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        }
+      );
+    }
+
+    const json2 = await res2.json();
+
+    let lifetimeTotal = 0;
+    const breakdown: Record<number, number> = {};
+
+    for (const year of contributionYears) {
+      const yearCount =
+        json2.data?.user?.[`y_${year}`]?.contributionCalendar
+          ?.totalContributions ?? 0;
+      breakdown[year] = yearCount;
+      lifetimeTotal += yearCount;
+    }
+
     return NextResponse.json(
       {
         weeks: last52,
-        total: combinedTotal,
-        breakdown: {
-          currentYear: currentYearTotal,
-          previousYear: previousYearTotal,
-        },
+        total: lifetimeTotal,
+        breakdown,
       },
       {
         headers: {
