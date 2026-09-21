@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Code2, Mail, Linkedin, Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { BentoCard } from '@/components/BentoCard';
-import { projects, person } from '@/data/siteConfig'; // ← import from siteConfig
+import { projects, person, socials } from '@/data/siteConfig';
 
 const ProjectVisual = memo(() => (
   <div className="w-full h-full flex items-center justify-center overflow-hidden relative rounded-lg border border-custom bg-card/30 group-hover:bg-card/50 transition-colors duration-500">
@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                 </div>
               </div>
             </BentoCard>
-            <BentoCard onClick={() => window.open('https://linkedin.com/in/vighnesh-gaddam/', '_blank')}>
+            <BentoCard onClick={() => window.open(socials.linkedin, '_blank')}>
               <div className="flex flex-col justify-between h-full p-2">
                 <div className="w-10 h-10 rounded-xl bg-card border border-custom flex items-center justify-center text-main">
                   <Linkedin size={20} />

@@ -414,8 +414,9 @@ export const GitHubContent = React.memo(function GitHubContent() {
   useEffect(() => {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 5000);
+    const ghUsername = socials.github.split('/').filter(Boolean).pop() || 'Shreeshavjain';
 
-    fetch('https://github-contributions-api.jogruber.de/v4/Vighnesh-Gaddam?y=last', {
+    fetch(`https://github-contributions-api.jogruber.de/v4/${ghUsername}?y=last`, {
       signal: controller.signal,
     })
       .then(r => r.json())

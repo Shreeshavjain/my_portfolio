@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
+import { seo } from '@/data/siteConfig'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // const baseUrl = 'https://vighnesh-dev.vercel.app'
-  const baseUrl = 'https://whoisvighnesh.in'
+  const baseUrl = seo.url
 
   return [
     {

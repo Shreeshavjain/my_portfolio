@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { socials } from '@/data/siteConfig';
 
 interface ContributionDay {
   contributionCount: number;
@@ -24,7 +25,7 @@ interface GitHubGraphQLResponse {
   errors?: { message: string }[];
 }
 
-const username = 'Vighnesh-Gaddam';
+const username = socials.github.split('/').filter(Boolean).pop() || 'Shreeshavjain';
 
 const query = `
   query {

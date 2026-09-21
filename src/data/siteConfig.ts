@@ -16,10 +16,10 @@ export const person = {
 
 // ─── SOCIALS ────────────────────────────────────────────────
 export const socials = {
-  github: "https://github.com/Vighnesh-Gaddam",
-  linkedin: "https://www.linkedin.com/in/vighnesh-gaddam/",
-  twitter: "https://x.com/DevVighnesh",
-  leetcode: "https://leetcode.com/u/Vighnesh_Gaddam/",
+  github: "https://github.com/Shreeshavjain",
+  linkedin: "https://www.linkedin.com/in/shreesha-v-jain/",
+  twitter: "https://x.com",
+  leetcode: "https://leetcode.com",
   email: `mailto:${person.email}`,
 } as const;
 
@@ -270,9 +270,10 @@ export const blogCategories: BlogCategory[] = [
 
 // ─── SEO / METADATA ──────────────────────────────────────────
 export const seo = {
+  // NOTE: Update this URL to your live custom domain (or set NEXT_PUBLIC_SITE_URL)
   url: "https://whoisvighnesh.in",
   siteName: "Shreesha V Jain Portfolio",
-  ogImage: "/shreesha-portrait.png",
-  twitterHandle: "@DevVighnesh",
+  ogImage: "/og-image.png",
+  twitterHandle: "",
   googleVerification: "cIA6t7lrm7bP85h9L0MiaI6I5a3yfqBvbs4De7nFfCs",
 } as const;

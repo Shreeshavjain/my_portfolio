@@ -81,8 +81,15 @@ export const metadata: Metadata = {
     title: "Shreesha V Jain | Full Stack Developer",
     description:
       "I build web apps using React, Next.js, and TypeScript — the kind that stay fast, scale smoothly, and don't fall apart once real users show up.",
-    site: seo.twitterHandle,
-    images: [seo.ogImage],
+    ...(seo.twitterHandle ? { site: seo.twitterHandle, creator: seo.twitterHandle } : {}),
+    images: [
+      {
+        url: seo.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Shreesha V Jain — Full Stack Developer",
+      },
+    ],
   },
 
   applicationName: seo.siteName,
