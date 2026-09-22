@@ -288,9 +288,20 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                                 <h3 className="text-sm font-bold text-main leading-tight">
                                   {edu.degree.join(' ')}
                                 </h3>
-                                <span className={`text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap ${colors.badge} ${edu.status === 'current' ? 'animate-pulse' : ''}`}>
-                                  {edu.grade ? `${edu.grade} • ${edu.period}` : edu.period}
-                                </span>
+                                {edu.status === 'current' ? (
+                                  <div className="flex flex-col items-start gap-1">
+                                    <span className={`text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap ${colors.badge} animate-pulse`}>
+                                      {edu.period}
+                                    </span>
+                                    <span className="text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap text-amber-500 bg-amber-500/10">
+                                      {edu.grade} •
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <span className={`text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap ${colors.badge}`}>
+                                    {edu.grade ? `${edu.grade} • ${edu.period}` : edu.period}
+                                  </span>
+                                )}
                               </div>
                               <p className="text-main font-medium text-[0.7rem] mb-0.5">{edu.institution}</p>
                               <p className="text-muted text-[0.65rem]">{edu.location}</p>
