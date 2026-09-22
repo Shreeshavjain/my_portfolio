@@ -89,7 +89,7 @@ export interface Education {
   grade: string;
   location: string;
   status: "current" | "completed";
-  color: "primary" | "blue" | "emerald" | "muted";
+  color: "primary" | "blue" | "emerald" | "orange" | "muted";
 }
 
 export const education: Education[] = [
@@ -118,7 +118,7 @@ export const education: Education[] = [
     grade: "86.08%",
     location: "Shivamogga, Karnataka, India",
     status: "completed",
-    color: "muted",
+    color: "orange",
   }
 ];
 

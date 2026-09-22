@@ -38,6 +38,13 @@ const colorMap = {
     badge: 'text-emerald-500 bg-emerald-500/10',
     hover: 'hover:border-emerald-500/20',
   },
+  orange: {
+    bg: 'bg-orange-500/5',
+    border: 'border-orange-500/10',
+    text: 'text-orange-500',
+    badge: 'text-orange-500 bg-orange-500/10',
+    hover: 'hover:border-orange-500/20',
+  },
   muted: {
     bg: 'bg-muted/5',
     border: 'border-custom',
@@ -51,6 +58,7 @@ const educationIcons = {
   primary: GraduationCap,
   blue: BookOpen,
   emerald: Award,
+  orange: BookMarked,
   muted: BookMarked,
 };
 
@@ -293,7 +301,7 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                                     <span className={`text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap ${colors.badge} animate-pulse`}>
                                       {edu.period}
                                     </span>
-                                    <span className="text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap text-amber-500 bg-amber-500/10">
+                                    <span className="text-[0.55rem] font-bold uppercase px-2 py-0.5 rounded-full w-fit whitespace-nowrap text-emerald-500 bg-emerald-500/10">
                                       {edu.grade} •
                                     </span>
                                   </div>
