@@ -53,7 +53,7 @@ export class GlobeErrorBoundary extends React.Component<Props, State> {
                 Based in
               </p>
               <h3 className="text-sm font-bold text-main leading-tight">
-                Mumbai, India
+                Shimoga, Karnataka, India
               </h3>
             </div>
           </div>

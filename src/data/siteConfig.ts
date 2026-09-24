@@ -5,10 +5,10 @@ export const person = {
   name: "Shreesha V Jain",
   firstName: "Shreesha",
   lastName: "V Jain.",
-  role: "Full Stack Developer",
-  bio: "Full Stack Developer architecting <full-stack>scalable apps</full-stack> & <devops>production-ready</devops> cloud systems.",
+  role: "Full Stack Developer & AI/ML Engineer",
+  bio: "Full Stack Developer & AI/ML Engineer building <full-stack>scalable web applications</full-stack> and working with <devops>Artificial Intelligence and Machine Learning</devops>.",
   email: "vgnshgdm@gmail.com",
-  location: "Mumbai, India",
+  location: "Shimoga, Karnataka, India",
   timezone: "Asia/Kolkata",
   available: true,
   year: "2026",
@@ -17,7 +17,7 @@ export const person = {
 // ─── SOCIALS ────────────────────────────────────────────────
 export const socials = {
   github: "https://github.com/Shreeshavjain",
-  linkedin: "https://www.linkedin.com/in/shreesha-v-jain/",
+  linkedin: "https://www.linkedin.com/in/shreesha-v-jain-b712a6382/",
   twitter: "https://x.com",
   leetcode: "https://leetcode.com",
   email: `mailto:${person.email}`,

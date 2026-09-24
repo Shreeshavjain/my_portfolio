@@ -143,7 +143,7 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                       <span className="text-muted opacity-50">V Jain.</span>
                     </h2>
                     <p className="text-[0.7rem] text-muted mt-3 leading-relaxed">
-                      MCA student at Manipal University. Full stack developer based in Mumbai, India.
+                      B.Tech student specializing in Artificial Intelligence & Machine Learning at NMAM Institute of Technology, Nitte. Full stack developer based in Shimoga, Karnataka, India.
                       Building production-ready systems since 2021.
                     </p>
                   </div>
@@ -151,7 +151,7 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                   {/* Status + quick facts */}
                   <div className="mt-auto pt-6 space-y-2">
                     <div className="flex flex-wrap gap-2 pt-1">
-                      {['Mumbai, IN', '3+ yrs exp', 'Freelance OK'].map((tag) => (
+                      {['Shimoga, Karnataka, India', '3+ yrs exp', 'Freelance OK'].map((tag) => (
                         <span
                           key={tag}
                           className="px-2.5 py-1 rounded-lg bg-card text-main text-[0.65rem] font-medium border border-custom"
@@ -221,7 +221,7 @@ export const DetailView: React.FC<DetailViewProps> = ({ onClose, type }) => {
                             <h4 className="text-main font-bold text-xs mb-1">Always learning</h4>
                             <p className="text-muted text-[0.7rem] leading-relaxed">
                               Currently deepening expertise in system design, Docker, and cloud infrastructure
-                              while pursuing my MCA at Manipal University.
+                              while pursuing my B.Tech in Artificial Intelligence & Machine Learning at NMAM Institute of Technology, Nitte.
                             </p>
                           </div>
                         </div>

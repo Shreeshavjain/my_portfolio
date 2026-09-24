@@ -39,7 +39,7 @@ export const MapContent: React.FC<MapContentProps> = ({ theme }) => {
                 Based in
               </p>
               <h3 className="text-sm font-bold text-main leading-tight">
-                Mumbai, India
+                Shimoga, Karnataka, India
               </h3>
               <p className="text-xs font-mono font-bold text-muted mt-0.5 tabular-nums leading-tight">
                 {time.toLocaleTimeString('en-IN', {
