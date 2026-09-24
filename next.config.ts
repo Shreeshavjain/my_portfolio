@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
             value: "vighnesh-dev.vercel.app",
           },
         ],
-        destination: "https://whoisvighnesh.in/:path*",
+        destination: "https://shreeshavjain-fawn.vercel.app/:path*",
         permanent: true,
       },
       {
@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
             value: "vighnesh-portfolio.vercel.app",
           },
         ],
-        destination: "https://whoisvighnesh.in/:path*",
+        destination: "https://shreeshavjain-fawn.vercel.app/:path*",
         permanent: true,
       },
     ];

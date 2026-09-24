@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(seo.url),
 
   title: {
-    default: "Shreesha V Jain | Full Stack Developer",
+    default: "Shreesha V Jain | Full Stack Developer & AI/ML Engineer",
     template: "%s | Shreesha V Jain",
   },
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "I'm Shreesha V Jain, a full-stack developer who enjoys building fast, scalable web apps and turning ideas into real, working products. I work mainly with React, Next.js, NestJS, and TypeScript, focusing on clean architecture, performance, and systems that hold up in production.",
+    "I'm Shreesha V Jain, a Full Stack Developer & AI/ML Engineer building scalable web applications and intelligent systems with React, Next.js, TypeScript, Artificial Intelligence, and Machine Learning.",
 
   keywords: [
     "Shreesha V Jain",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   openGraph: {
-    title: "Shreesha V Jain | Full Stack Developer",
+    title: "Shreesha V Jain | Full Stack Developer & AI/ML Engineer",
     description:
-      "Here's a glimpse of what I've been working on — building web apps that don't just run fast, but hold up when things get real.",
+      "Full Stack Developer & AI/ML Engineer building scalable web applications and intelligent systems.",
     url: seo.url,
     siteName: seo.siteName,
     images: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
         url: seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "Shreesha V Jain — Full Stack Developer",
+        alt: "Shreesha V Jain — Full Stack Developer & AI/ML Engineer",
       },
     ],
     locale: "en_US",
@@ -78,16 +78,16 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Shreesha V Jain | Full Stack Developer",
+    title: "Shreesha V Jain | Full Stack Developer & AI/ML Engineer",
     description:
-      "I build web apps using React, Next.js, and TypeScript — the kind that stay fast, scale smoothly, and don't fall apart once real users show up.",
+      "I build scalable web applications and work with Artificial Intelligence and Machine Learning.",
     ...(seo.twitterHandle ? { site: seo.twitterHandle, creator: seo.twitterHandle } : {}),
     images: [
       {
         url: seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "Shreesha V Jain — Full Stack Developer",
+        alt: "Shreesha V Jain — Full Stack Developer & AI/ML Engineer",
       },
     ],
   },

@@ -261,10 +261,9 @@ export const blogCategories: BlogCategory[] = [
 
 // ─── SEO / METADATA ──────────────────────────────────────────
 export const seo = {
-  // NOTE: Update this URL to your live custom domain (or set NEXT_PUBLIC_SITE_URL)
-  url: "https://whoisvighnesh.in",
+  url: "https://shreeshavjain-fawn.vercel.app/",
   siteName: "Shreesha V Jain Portfolio",
-  ogImage: "/og-image.png",
+  ogImage: "https://shreeshavjain-fawn.vercel.app/og-image.png",
   twitterHandle: "",
   googleVerification: "cIA6t7lrm7bP85h9L0MiaI6I5a3yfqBvbs4De7nFfCs",
 } as const;
