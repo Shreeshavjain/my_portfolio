@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Github, Linkedin, Send, ArrowUpRight, Terminal, FileText, Twitter, Copy, Check } from 'lucide-react';
+import { X, Github, Linkedin, Instagram, Send, ArrowUpRight, FileText, Copy, Check } from 'lucide-react';
 import { person, socials, resume } from '@/data/siteConfig';
 
 export const ConnectionHub = ({ onClose, layoutId }: { onClose: () => void; layoutId?: string }) => {
@@ -74,7 +74,7 @@ export const ConnectionHub = ({ onClose, layoutId }: { onClose: () => void; layo
           </div>
 
           {/* BENTO GRID */}
-          <div className="p-5 pt-0 pb-8 grid grid-cols-4 grid-rows-4 gap-3">
+          <div className="p-5 pt-0 pb-8 grid grid-cols-4 gap-3">
 
             {/* CV CARD */}
             <a
@@ -114,28 +114,17 @@ export const ConnectionHub = ({ onClose, layoutId }: { onClose: () => void; layo
               <Linkedin size={22} className="text-muted [@media(hover:hover)]:group-hover:text-white transition-colors" />
             </a>
 
-            {/* TWITTER */}
+            {/* INSTAGRAM */}
             <a
-              href={socials.twitter}
+              href={socials.instagram}
               target="_blank"
-              className="col-span-2 row-span-1 group rounded-3xl bg-card-hover border border-custom flex items-center justify-center gap-3 transition-colors duration-200 [@media(hover:hover)]:hover:border-[#1DA1F2]/30"
+              className="col-span-1 col-start-4 row-start-3 row-span-1 h-[calc(100%-12px)] self-start group rounded-3xl bg-card-hover border border-custom flex items-center justify-center transition-colors duration-200 [@media(hover:hover)]:hover:bg-[linear-gradient(135deg,#f58529,#dd2a7b_50%,#8134af)]"
             >
-              <Twitter size={20} className="text-muted [@media(hover:hover)]:group-hover:text-[#1DA1F2] transition-colors" />
-              <span className="text-[0.65rem] font-black uppercase tracking-widest group-hover:text-[#1DA1F2]">Twitter</span>
-            </a>
-
-            {/* LEETCODE */}
-            <a
-              href={socials.leetcode}
-              target="_blank"
-              className="col-span-2 row-span-1 group rounded-3xl bg-card-hover border border-custom flex items-center justify-center gap-3 transition-colors duration-200 [@media(hover:hover)]:hover:border-[#FFA116]/30"
-            >
-              <Terminal size={20} className="text-muted [@media(hover:hover)]:group-hover:text-[#FFA116] transition-colors" />
-              <span className="text-[0.65rem] font-black uppercase tracking-widest group-hover:text-[#FFA116]">LeetCode</span>
+              <Instagram size={22} className="text-muted [@media(hover:hover)]:group-hover:text-white transition-colors" />
             </a>
 
             {/* EMAIL */}
-            <div className="col-span-4 row-span-1 group flex items-center justify-between p-2 pl-6 rounded-3xl bg-card border border-custom [@media(hover:hover)]:hover:border-emerald-500/30 transition-all shadow-sm">
+            <div className="col-span-3 row-start-3 row-span-1 group flex items-center justify-between p-2 pl-6 rounded-3xl bg-card border border-custom [@media(hover:hover)]:hover:border-emerald-500/30 transition-all shadow-sm">
               <a href={`mailto:${person.email}`} className="flex items-center gap-4 flex-1">
                 <Send size={18} className="text-emerald-500" strokeWidth={2} />
                 <div className="flex flex-col">

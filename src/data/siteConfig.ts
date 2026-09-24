@@ -7,7 +7,7 @@ export const person = {
   lastName: "V Jain.",
   role: "Full Stack Developer & AI/ML Engineer",
   bio: "Full Stack Developer & AI/ML Engineer building <full-stack>scalable web applications</full-stack> and working with <devops>Artificial Intelligence and Machine Learning</devops>.",
-  email: "vgnshgdm@gmail.com",
+  email: "jainshreeshav@gmail.com",
   location: "Shimoga, Karnataka, India",
   timezone: "Asia/Kolkata",
   available: true,
@@ -18,6 +18,7 @@ export const person = {
 export const socials = {
   github: "https://github.com/Shreeshavjain",
   linkedin: "https://www.linkedin.com/in/shreesha-v-jain-b712a6382/",
+  instagram: "https://www.instagram.com/jainshreeshav/?hl=en",
   twitter: "https://x.com",
   leetcode: "https://leetcode.com",
   email: `mailto:${person.email}`,
